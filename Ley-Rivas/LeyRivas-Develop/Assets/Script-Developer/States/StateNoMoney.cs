@@ -2,10 +2,10 @@
 
 namespace Leyrivas
 {
-    public class StateNoMoney : State, IState
+    public class StateNoMoney : State, IState, IScene
     {
         private int money;
-        public bool InitState()
+        public bool InitState(string nameScene)
         {
             activedState = true;
             return activedState;
@@ -40,6 +40,11 @@ namespace Leyrivas
                 return true;
             }
             else{return false;}
+        }
+
+        public void LoadSceneState(string sceneName)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

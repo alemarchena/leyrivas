@@ -3,6 +3,6 @@ namespace Leyrivas
 {
     public interface IState
     {
-        public bool InitState();
+        public bool InitState(string nameScene);
     }
 }

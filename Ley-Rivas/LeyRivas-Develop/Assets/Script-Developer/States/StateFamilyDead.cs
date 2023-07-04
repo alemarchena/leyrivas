@@ -2,9 +2,14 @@
 
 namespace Leyrivas
 {
-    public class StateFamilyDead : State, IState
+    public class StateFamilyDead : State, IState, IScene
     {
-        public bool InitState()
+        public bool InitState(string nameScene)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void LoadSceneState(string sceneName)
         {
             throw new System.NotImplementedException();
         }

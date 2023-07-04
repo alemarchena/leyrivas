@@ -339,6 +339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataState: {fileID: 11400000, guid: eae0c174fbe14c144b6f1e58b218981c, type: 2}
+  dataScene: {fileID: 11400000, guid: 789ae8ac2fb3c9145a2b88015700b130, type: 2}
 --- !u!4 &1109538353
 Transform:
   m_ObjectHideFlags: 0
