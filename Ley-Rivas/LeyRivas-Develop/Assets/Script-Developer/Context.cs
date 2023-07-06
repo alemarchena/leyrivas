@@ -31,44 +31,9 @@ namespace Leyrivas
             if (dataState == null)
             {
                 //Determina el estado actual del juego
+                lastEnumState = dataState.GetDataState();
+
                 
-                if (!dataState.GetNoMoneyState())
-                {
-                    StateNoMoney stateNoMoney = gameObject.AddComponent<StateNoMoney>();
-                    dataState.SetNoMoneyState(DetermineState(stateNoMoney, dataScene.GetNameNoMoneyScene()));
-                }
-                else
-                {lastEnumState = EnumState.StateNoMoney; }
-
-                //----------------------------------------------------------------------
-                if (!dataState.GetStealBackPackState())
-                {
-                    StateStealBackPack stateStealBackPack= gameObject.AddComponent<StateStealBackPack>();
-                    dataState.SetStealBackPackState(DetermineState(stateStealBackPack,dataScene.GetNameStealBackPackScene()));
-                }
-                else
-                {lastEnumState = EnumState.StateStealBackPack;}
-
-                //----------------------------------------------------------------------
-
-                if (!dataState.GetFamilyDeadState())
-                {
-                    StateFamilyDead stateFamilyDead = gameObject.AddComponent<StateFamilyDead>();
-                    dataState.SetFamilyDeadState(DetermineState(stateFamilyDead,dataScene.GetNameFamilyDeadScene()));
-                }
-                else
-                {lastEnumState = EnumState.StateFamilyDead;}
-
-                //----------------------------------------------------------------------
-
-                if (!dataState.GetLitoDeadState())
-                {
-                    StateLitoDead stateLitoDead = gameObject.AddComponent<StateLitoDead>();
-                    dataState.SetLitoDeadState(DetermineState(stateLitoDead,dataScene.GetNameLitoDeadScene()));
-                }
-                else
-                {lastEnumState = EnumState.StateLitoDead;}
-
 
             }
             else

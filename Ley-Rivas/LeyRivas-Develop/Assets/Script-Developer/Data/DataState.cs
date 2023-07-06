@@ -10,19 +10,13 @@ namespace Leyrivas
     public class DataState : ScriptableObject
     {
         [SerializeField]
-        bool activatedNoMoneyState, activatedStealBackPackState, activatedFamilyDeadState, activatedLitoDeadState;
+        private EnumState lastState;
 
-        public bool GetNoMoneyState(){ return activatedNoMoneyState; }
-        public void SetNoMoneyState(bool value){ activatedNoMoneyState = value; }
+        public EnumState GetDataState()
+        {
+            return lastState;
+        }
 
-        public bool GetStealBackPackState(){return activatedStealBackPackState;}
-        public void SetStealBackPackState(bool value){ activatedStealBackPackState=value; }
-
-        public bool GetFamilyDeadState(){return  activatedFamilyDeadState;}
-        public void SetFamilyDeadState(bool value){ activatedFamilyDeadState = value; }
-
-        public bool GetLitoDeadState(){return activatedLitoDeadState;}
-        public void SetLitoDeadState(bool value){ activatedLitoDeadState = value; }
 
     }
 }

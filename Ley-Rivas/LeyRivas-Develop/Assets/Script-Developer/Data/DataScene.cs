@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 namespace Leyrivas
 {
@@ -9,11 +10,15 @@ namespace Leyrivas
     [CreateAssetMenu(fileName = "DataScene", menuName = "Data/scene", order = 2)]
     public class DataScene : ScriptableObject
     {
-        [SerializeField]
-        string nameNoMoneyStateScene, nameStealBackPackStateScene, nameFamilyDeadStateScene, nameLitoDeadStateScene;
-        public string GetNameNoMoneyScene(){ return nameNoMoneyStateScene; }
-        public string GetNameStealBackPackScene(){return nameStealBackPackStateScene; }
-        public string GetNameFamilyDeadScene(){return nameFamilyDeadStateScene; }
-        public string GetNameLitoDeadScene(){return nameLitoDeadStateScene; }
+        [SerializeField] List<DictionaryStateScene> listDictionary;
+        
+
+        [System.Serializable]
+        class DictionaryStateScene
+        {
+            [SerializeField] EnumState enumState;
+            [SerializeField] string nameScene;
+        }
     }
+
 }

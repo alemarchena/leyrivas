@@ -12,7 +12,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c27fa4ab06fd1641974192d65ddfabe, type: 3}
   m_Name: DataScene
   m_EditorClassIdentifier: 
-  nameNoMoneyStateScene: 
-  nameStealBackPackStateScene: 
-  nameFamilyDeadStateScene: 
-  nameLitoDeadStateScene: 
