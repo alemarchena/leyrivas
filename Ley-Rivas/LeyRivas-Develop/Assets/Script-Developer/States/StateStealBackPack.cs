@@ -1,23 +1,21 @@
-
 using UnityEngine.SceneManagement;
 
 namespace Leyrivas
 {
-    public class StateStealBackPack : State, IState,IScene
+    public class StateStealBackPack : State, IState
     {
         private int money;
 
-        public bool InitState(string nameScene)
+        public void InitState(string nameScene, IState iState, DataState dataState)
         {
-            activedState = true;
+            enumState = EnumState.StateStealBackPack;
+
+            Publisher.SetIState(iState);
+            Publisher.SetDataState(dataState);
+
             SceneManager.LoadScene(nameScene);
-            return activedState;
         }
         public int GetMoney() { return money; }
 
-        public void LoadFuntionalityScene()
-        {
-
-        }
     }
 }

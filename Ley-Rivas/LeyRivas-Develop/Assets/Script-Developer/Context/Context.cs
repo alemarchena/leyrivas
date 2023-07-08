@@ -1,8 +1,6 @@
 using Leyrivas;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 namespace Leyrivas
 {
@@ -36,7 +34,7 @@ namespace Leyrivas
                     if(itemDicState.enumState == EnumState.StateFamilyDead)     { iState = gameObject.AddComponent<StateFamilyDead>(); }
                     if(itemDicState.enumState == EnumState.StateLitoDead)       { iState = gameObject.AddComponent<StateLitoDead>(); }
 
-                    iState.InitState(itemDicState.nameScene);
+                    iState.InitState(itemDicState.nameScene,iState,dataState);
 
                     return itemDicState.enumState;
                 }

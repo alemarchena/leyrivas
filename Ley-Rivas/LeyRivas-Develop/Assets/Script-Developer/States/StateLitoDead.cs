@@ -1,23 +1,19 @@
-
-
 using UnityEngine.SceneManagement;
 
 namespace Leyrivas
 {
-    public class StateLitoDead : State, IState, IScene
+    public class StateLitoDead : State, IState
     {
 
-        public bool InitState(string nameScene)
+        public void InitState(string nameScene, IState iState, DataState dataState)
         {
-            activedState = true;
+            enumState = EnumState.StateLitoDead;
+
+            Publisher.SetIState(iState);
+            Publisher.SetDataState(dataState);
+
             SceneManager.LoadScene(nameScene);
-            return activedState;
         }
 
-
-        public void LoadFuntionalityScene()
-        {
-
-        }
     }
 }

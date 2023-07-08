@@ -21,6 +21,10 @@ namespace Leyrivas
             return lastState;
         }
 
+        public void SetState( EnumState state)
+        {
+            lastState = state;
+        }
 
     }
 }

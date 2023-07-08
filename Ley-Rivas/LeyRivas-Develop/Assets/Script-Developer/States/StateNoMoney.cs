@@ -1,17 +1,19 @@
 
-
 using UnityEngine.SceneManagement;
 
 namespace Leyrivas
 {
-    public class StateNoMoney : State, IState, IScene
+    public class StateNoMoney : State, IState
     {
         private int money;
-        public bool InitState(string nameScene)
+        public void InitState(string nameScene,IState iState, DataState dataState)
         {
-            activedState = true;
+            enumState = EnumState.StateNoMoney;
+
+            Publisher.SetIState(iState);
+            Publisher.SetDataState(dataState);
+
             SceneManager.LoadScene(nameScene);
-            return activedState;
         }
 
         public int GetMoney(){return money;}
@@ -45,10 +47,7 @@ namespace Leyrivas
             else{return false;}
         }
 
-        public void LoadFuntionalityScene()
-        {
-
-        }
+       
 
     }
 }

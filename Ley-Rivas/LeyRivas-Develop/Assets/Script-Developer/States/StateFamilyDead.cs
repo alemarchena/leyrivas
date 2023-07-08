@@ -1,22 +1,22 @@
 
 
-using System.Diagnostics;
+using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
 
 namespace Leyrivas
 {
-    public class StateFamilyDead : State, IState,IScene
+    public class StateFamilyDead : State, IState
     {
-        public bool InitState(string nameScene)
+        public void InitState(string nameScene, IState iState, DataState dataState)
         {
-            activedState = true;
+            enumState = EnumState.StateFamilyDead;
+
+            Publisher.SetIState(iState);
+            Publisher.SetDataState(dataState);
+
             SceneManager.LoadScene(nameScene);
-            return true;
         }
 
-        public void LoadFuntionalityScene()
-        {
-            
-        }
+   
     }
 }
