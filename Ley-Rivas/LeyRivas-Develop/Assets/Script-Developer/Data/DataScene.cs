@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 
 namespace Leyrivas
 {
@@ -11,14 +12,20 @@ namespace Leyrivas
     public class DataScene : ScriptableObject
     {
         [SerializeField] List<DictionaryStateScene> listDictionary;
-        
 
-        [System.Serializable]
-        class DictionaryStateScene
+        public List<DictionaryStateScene> ListDictionary
         {
-            [SerializeField] EnumState enumState;
-            [SerializeField] string nameScene;
+            get{
+                return listDictionary;
+            }
         }
+        
     }
 
+    [System.Serializable]
+    public class DictionaryStateScene
+    {
+        public EnumState enumState;
+        public string nameScene;
+    }
 }

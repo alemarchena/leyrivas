@@ -1,5 +1,5 @@
 
 public interface IScene 
 {
-    public void LoadSceneState(string sceneName);
+    public void LoadFuntionalityScene();
 }

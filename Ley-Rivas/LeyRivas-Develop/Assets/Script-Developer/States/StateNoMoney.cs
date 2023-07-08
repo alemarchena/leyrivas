@@ -1,5 +1,7 @@
 
 
+using UnityEngine.SceneManagement;
+
 namespace Leyrivas
 {
     public class StateNoMoney : State, IState, IScene
@@ -8,6 +10,7 @@ namespace Leyrivas
         public bool InitState(string nameScene)
         {
             activedState = true;
+            SceneManager.LoadScene(nameScene);
             return activedState;
         }
 
@@ -42,9 +45,10 @@ namespace Leyrivas
             else{return false;}
         }
 
-        public void LoadSceneState(string sceneName)
+        public void LoadFuntionalityScene()
         {
-            throw new System.NotImplementedException();
+
         }
+
     }
 }

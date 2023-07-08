@@ -1,17 +1,22 @@
 
 
+using System.Diagnostics;
+using UnityEngine.SceneManagement;
+
 namespace Leyrivas
 {
-    public class StateFamilyDead : State, IState, IScene
+    public class StateFamilyDead : State, IState,IScene
     {
         public bool InitState(string nameScene)
         {
-            throw new System.NotImplementedException();
+            activedState = true;
+            SceneManager.LoadScene(nameScene);
+            return true;
         }
 
-        public void LoadSceneState(string sceneName)
+        public void LoadFuntionalityScene()
         {
-            throw new System.NotImplementedException();
+            
         }
     }
 }

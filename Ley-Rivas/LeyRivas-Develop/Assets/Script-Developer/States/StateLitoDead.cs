@@ -1,18 +1,23 @@
 
 
+using UnityEngine.SceneManagement;
+
 namespace Leyrivas
 {
     public class StateLitoDead : State, IState, IScene
     {
+
         public bool InitState(string nameScene)
         {
-            throw new System.NotImplementedException();
+            activedState = true;
+            SceneManager.LoadScene(nameScene);
+            return activedState;
         }
 
 
-        public void LoadSceneState(string sceneName)
+        public void LoadFuntionalityScene()
         {
-            throw new System.NotImplementedException();
+
         }
     }
 }

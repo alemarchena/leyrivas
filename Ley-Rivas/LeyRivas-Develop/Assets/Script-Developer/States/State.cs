@@ -7,6 +7,7 @@ namespace Leyrivas
     {
         protected EnumState enumState;
         protected bool activedState;
+        
 
         protected bool GetActivedState{ get { return activedState; } }
     }

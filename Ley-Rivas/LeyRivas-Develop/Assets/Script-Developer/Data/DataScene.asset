@@ -12,3 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c27fa4ab06fd1641974192d65ddfabe, type: 3}
   m_Name: DataScene
   m_EditorClassIdentifier: 
+  listDictionary:
+  - enumState: 0
+    nameScene: EscenaNoMoney
+  - enumState: 1
+    nameScene: EscenaNoMoney
+  - enumState: 2
+    nameScene: EscenaFamilyDead
+  - enumState: 3
+    nameScene: EscenaStealBackPack
+  - enumState: 4
+    nameScene: 
+  - enumState: 4
+    nameScene: 

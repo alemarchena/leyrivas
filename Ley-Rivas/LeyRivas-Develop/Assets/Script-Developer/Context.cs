@@ -9,39 +9,49 @@ namespace Leyrivas
     {
         [SerializeField] DataState dataState;
         [SerializeField] DataScene dataScene;
-        EnumState lastEnumState;
+
+        private void Awake()
+        {
+            DontDestroyOnLoad(this.gameObject);
+        }
 
         private void Start()
         {
             GetDataState();
         }
 
-        public EnumState GetLastState()
+        public void DetermineState(EnumState lastEnumState)
         {
-            return lastEnumState;
-        }
+            
+            foreach (DictionaryStateScene itemDicState in dataScene.ListDictionary)
+            {
+                if(itemDicState.enumState == lastEnumState)
+                {
+                    IState iState = gameObject.AddComponent<StateNoMoney>();
 
-        public bool DetermineState(IState iState, string nameScene)
-        {
-            return  iState.InitState(nameScene);
+                    if(itemDicState.enumState == EnumState.StateNone)           { iState = gameObject.AddComponent<StateNoMoney>(); }
+                    if(itemDicState.enumState == EnumState.StateNoMoney)        { iState = gameObject.AddComponent<StateNoMoney>(); }
+                    if(itemDicState.enumState == EnumState.StateStealBackPack)  { iState = gameObject.AddComponent<StateStealBackPack>(); }
+                    if(itemDicState.enumState == EnumState.StateFamilyDead)     { iState = gameObject.AddComponent<StateFamilyDead>(); }
+                    if(itemDicState.enumState == EnumState.StateLitoDead)       { iState = gameObject.AddComponent<StateLitoDead>(); }
+
+                    iState.InitState(itemDicState.nameScene);
+
+                    return;
+                }
+            }
         }
 
         public void GetDataState()
         {
-            if (dataState == null)
+            if (dataState == null || dataScene == null)
             {
-                //Determina el estado actual del juego
-                lastEnumState = dataState.GetDataState();
-
-                
-
+                Debug.LogError("Verifique las clases DataState y DataScene que estén asociadas en la clase Context");
             }
             else
             {
-                Debug.LogError("Falta asociar la clase DataState a la clase Context");
+                DetermineState(dataState.GetDataState());
             }
         }
-
-        
     }
 }
