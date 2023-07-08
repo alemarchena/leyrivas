@@ -2,6 +2,7 @@ using Leyrivas;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 namespace Leyrivas
 {
@@ -17,10 +18,10 @@ namespace Leyrivas
 
         private void Start()
         {
-            GetDataState();
+            LookDataState();
         }
 
-        public void DetermineState(EnumState lastEnumState)
+        public EnumState DetermineState(EnumState lastEnumState)
         {
             
             foreach (DictionaryStateScene itemDicState in dataScene.ListDictionary)
@@ -37,12 +38,14 @@ namespace Leyrivas
 
                     iState.InitState(itemDicState.nameScene);
 
-                    return;
+                    return itemDicState.enumState;
                 }
             }
+
+            return EnumState.StateNone;
         }
 
-        public void GetDataState()
+        public void LookDataState()
         {
             if (dataState == null || dataScene == null)
             {
@@ -50,8 +53,17 @@ namespace Leyrivas
             }
             else
             {
-                DetermineState(dataState.GetDataState());
+                EnumState lastEnumState = DetermineState(dataState.GetDataState());
+                StartCoroutine(ObserverChangeScene(lastEnumState));
             }
         }
+
+        IEnumerator ObserverChangeScene(EnumState lastEnumState)
+        {
+            yield return new WaitWhile( () => dataState.GetDataState() == lastEnumState);
+            LookDataState();
+        }
+
+       
     }
 }

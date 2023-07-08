@@ -12,6 +12,10 @@ namespace Leyrivas
         [SerializeField]
         private EnumState lastState;
 
+        /// <summary>
+        /// Devuelve la última escena cargada.
+        /// </summary>
+        /// <returns></returns>
         public EnumState GetDataState()
         {
             return lastState;
