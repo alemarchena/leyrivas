@@ -9,5 +9,6 @@ namespace Leyrivas
         StateFamilyDead,
         StateStealBackPack, 
         StateLitoDead,
+        StateCredits,
     }
 }

@@ -17,9 +17,9 @@ MonoBehaviour:
     nameScene: EscenaNoMoney
   - enumState: 1
     nameScene: EscenaNoMoney
-  - enumState: 2
-    nameScene: EscenaFamilyDead
   - enumState: 3
+    nameScene: EscenaFamilyDead
+  - enumState: 2
     nameScene: EscenaStealBackPack
   - enumState: 4
     nameScene: EscenaLitoDead
