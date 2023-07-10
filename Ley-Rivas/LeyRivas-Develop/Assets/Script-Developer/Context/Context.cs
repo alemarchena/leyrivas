@@ -1,5 +1,7 @@
 using Leyrivas;
 using System.Collections;
+using Unity.VisualScripting;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 namespace Leyrivas
@@ -26,13 +28,30 @@ namespace Leyrivas
             {
                 if(itemDicState.enumState == lastEnumState)
                 {
-                    IState iState = gameObject.AddComponent<StateNoMoney>();
+                    try
+                    {
+                        Destroy(GameObject.Find("ChildOfContext"));
+                    }
+                    catch { }
 
-                    if(itemDicState.enumState == EnumState.StateNone)           { iState = gameObject.AddComponent<StateNoMoney>(); }
-                    if(itemDicState.enumState == EnumState.StateNoMoney)        { iState = gameObject.AddComponent<StateNoMoney>(); }
-                    if(itemDicState.enumState == EnumState.StateStealBackPack)  { iState = gameObject.AddComponent<StateStealBackPack>(); }
-                    if(itemDicState.enumState == EnumState.StateFamilyDead)     { iState = gameObject.AddComponent<StateFamilyDead>(); }
-                    if(itemDicState.enumState == EnumState.StateLitoDead)       { iState = gameObject.AddComponent<StateLitoDead>(); }
+                    GameObject go = new();
+                    GameObject contextGameObject = Instantiate(go, this.transform) as GameObject;
+                    try
+                    {
+                        contextGameObject.name = "ChildOfContext";
+                    }
+                    catch { }
+
+                    IState iState = null;
+
+                    if(itemDicState.enumState == EnumState.StateNone)           { iState = contextGameObject.AddComponent<StateNoMoney>(); }
+                    if(itemDicState.enumState == EnumState.StateNoMoney)        { iState = contextGameObject.AddComponent<StateNoMoney>(); }
+                    if(itemDicState.enumState == EnumState.StateStealBackPack)  { iState = contextGameObject.AddComponent<StateStealBackPack>(); }
+                    if(itemDicState.enumState == EnumState.StateFamilyDead)     { iState = contextGameObject.AddComponent<StateFamilyDead>(); }
+                    if(itemDicState.enumState == EnumState.StateLitoDead)       { iState = contextGameObject.AddComponent<StateLitoDead>(); }
+
+
+                    
 
                     iState.InitState(itemDicState.nameScene,iState,dataState);
 
