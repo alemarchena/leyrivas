@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   listDictionary:
   - enumState: 0
-    nameScene: C.Pto_Almacen
+    nameScene: EscenaNoMoney
   - enumState: 1
-    nameScene: C.Pto_Boxeador
+    nameScene: EscenaNoMoney
   - enumState: 3
-    nameScene: "C.Pto_Cu\xF1ado"
-  - enumState: 2
     nameScene: EscenaStealBackPack
+  - enumState: 2
+    nameScene: EscenaFamilyDead
   - enumState: 4
     nameScene: EscenaLitoDead
