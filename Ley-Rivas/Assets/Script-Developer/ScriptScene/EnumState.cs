@@ -18,5 +18,7 @@ namespace Leyrivas
         SceneBaldio,
         SceneMapa,
         StateCredits,
+        Dead,
     }
+
 }

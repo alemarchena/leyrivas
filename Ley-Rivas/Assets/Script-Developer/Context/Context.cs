@@ -18,7 +18,20 @@ namespace Leyrivas
 
         private void Start()
         {
-            LookDataState();
+            RecursiveLookDataState();
+        }
+
+        public void RecursiveLookDataState()
+        {
+            if (dataState == null || dataScene == null)
+            {
+                Debug.LogError("Verifique las clases DataState y DataScene que estén asociadas en la clase Context");
+            }
+            else
+            {
+                EnumState lastEnumState = DetermineState(dataState.GetDataState());
+                StartCoroutine(ObserverChangeScene(lastEnumState));
+            }
         }
 
         public EnumState DetermineState(EnumState lastEnumState)
@@ -33,32 +46,17 @@ namespace Leyrivas
                         Destroy(GameObject.Find("ChildOfContext"));
                     }
                     catch { }
-
-                    GameObject go = new();
-                    GameObject contextGameObject = Instantiate(go, this.transform) as GameObject;
-                    try
-                    {
-                        contextGameObject.name = "ChildOfContext";
-                    }
-                    catch { }
-
+                    
                     IState iState = null;
 
-    if (itemDicState.enumState == EnumState.ScenePresentacion)  { iState = contextGameObject.AddComponent<StateCredits>(); }
-    if(itemDicState.enumState == EnumState.SceneAlmacen)        { iState = contextGameObject.AddComponent<SceneAlmacen>(); }
-    if(itemDicState.enumState == EnumState.SceneBoxeador)       { iState = contextGameObject.AddComponent<SceneBoxeador>(); }
-    if(itemDicState.enumState == EnumState.SceneCuniado)        { iState = contextGameObject.AddComponent<SceneCuniado>(); }
-    if(itemDicState.enumState == EnumState.SceneConversationCuniado){ iState = contextGameObject.AddComponent<SceneConversationCuniado>(); }
-    if(itemDicState.enumState == EnumState.SceneRivas)          { iState = contextGameObject.AddComponent<SceneRivas>(); }
-    if(itemDicState.enumState == EnumState.SceneConversationRivas) { iState = contextGameObject.AddComponent<SceneConversationRivas>(); }
-    if(itemDicState.enumState == EnumState.SceneViasDelTren)    { iState = contextGameObject.AddComponent<SceneViasDelTren>(); }
-    if(itemDicState.enumState == EnumState.ScenePolicia)        { iState = contextGameObject.AddComponent<ScenePolicia>(); }
-    if(itemDicState.enumState == EnumState.SceneConversationPolicia) { iState = contextGameObject.AddComponent<SceneConversationPolicia>(); }
-    if(itemDicState.enumState == EnumState.SceneBaldio)         { iState = contextGameObject.AddComponent<SceneBaldio>(); }
-    if(itemDicState.enumState == EnumState.SceneMapa)           { iState = contextGameObject.AddComponent<SceneMapa>(); }
-    if(itemDicState.enumState == EnumState.StateCredits)        { iState = contextGameObject.AddComponent<StateCredits>(); }
+                    GameObject gao = new();
+                    gao.AddComponent<SceneAdmin>();
+                    iState = gao.GetComponent< SceneAdmin>().ReturnInterface(itemDicState);
 
-                    iState.InitState(itemDicState.nameScene,iState,dataState);
+                    if(iState != null)
+                    {
+                        iState.InitState(itemDicState.nameScene,iState,dataState);
+                    }
 
                     return itemDicState.enumState;
                 }
@@ -67,23 +65,12 @@ namespace Leyrivas
             return EnumState.ScenePresentacion;
         }
 
-        public void LookDataState()
-        {
-            if (dataState == null || dataScene == null)
-            {
-                Debug.LogError("Verifique las clases DataState y DataScene que estén asociadas en la clase Context");
-            }
-            else
-            {
-                EnumState lastEnumState = DetermineState(dataState.GetDataState());
-                StartCoroutine(ObserverChangeScene(lastEnumState));
-            }
-        }
+       
 
         IEnumerator ObserverChangeScene(EnumState lastEnumState)
         {
             yield return new WaitWhile( () => dataState.GetDataState() == lastEnumState);
-            LookDataState();
+            RecursiveLookDataState();
         }
 
        

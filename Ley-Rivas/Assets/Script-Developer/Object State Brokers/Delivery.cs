@@ -16,6 +16,7 @@ namespace Leyrivas
         public void SendMessageToPublisher()
         {
             Publisher.SetState(enumState);
+            
         }
      
     }

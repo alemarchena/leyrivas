@@ -13,13 +13,21 @@ MonoBehaviour:
   m_Name: DataScene
   m_EditorClassIdentifier: 
   listDictionary:
-  - enumState: 0
-    nameScene: EscenaNoMoney
   - enumState: 1
-    nameScene: EscenaNoMoney
+    nameScene: Prototipo_Mapa
   - enumState: 3
-    nameScene: EscenaStealBackPack
+    nameScene: C.Pto_Boxeador
   - enumState: 2
-    nameScene: EscenaFamilyDead
+    nameScene: C.Pto_Almacen
   - enumState: 4
-    nameScene: EscenaLitoDead
+    nameScene: "C.Pto_Cu\xF1ado"
+  - enumState: 8
+    nameScene: C.Pto_ViasDelTren
+  - enumState: 9
+    nameScene: Ca.Pto_Policia
+  - enumState: 6
+    nameScene: C.Pto_Rivas
+  - enumState: 11
+    nameScene: Pto_Baldio
+  - enumState: 5
+    nameScene: Ca.Pto_Rivas
