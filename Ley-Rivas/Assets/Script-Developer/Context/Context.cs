@@ -30,6 +30,7 @@ namespace Leyrivas
             else
             {
                 EnumState lastEnumState = DetermineState(dataState.GetDataState());
+                StopCoroutine(ObserverChangeScene(lastEnumState));
                 StartCoroutine(ObserverChangeScene(lastEnumState));
             }
         }
